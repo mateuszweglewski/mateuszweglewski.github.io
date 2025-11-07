@@ -94,23 +94,62 @@
 
     .card {
       position: relative;
-      background: linear-gradient(180deg, #131828, #101422);
+      /* keep border and shadow on the card shell */
       border: 1px solid rgba(154,163,178,.14);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
-      display: flex; flex-direction: column;
+      display: flex;
+      flex-direction: column;
       transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-      min-height: 230px;
+      min-height: 260px;
+      /* visual split: cover in the top half, content on a uniform panel below */
+      background: transparent; /* background for the card shell comes from its parts */
     }
     .card:hover { transform: translateY(-2px); border-color: rgba(122,162,255,.35); box-shadow: 0 16px 40px rgba(0,0,0,.55); }
 
-    .cover { height: 150px; background: linear-gradient(135deg, #182340, #0e1426); display:grid; place-items:center; font-size: 46px; }
-    .content { padding: 14px; display:flex; flex-direction:column; gap:8px; }
+    /* cover now takes the top 50% of the card */
+    .cover {
+      flex: none;
+      height: 120px;
+      min-height: 120px;
+      max-height: 120px;
+      background: linear-gradient(135deg, #182340, #0e1426);
+      display: grid;
+      place-items: center;
+      font-size: 46px;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    /* content is a separate panel with a solid background */
+    .content {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: var(--card);
+    }
+
     .title { font-weight: 650; letter-spacing:.2px; }
     .meta { font-size: 12px; color: var(--muted); display:flex; gap:8px; flex-wrap:wrap; }
     .actions { margin-top: auto; display:flex; gap:8px; }
     .pill { font-size: 12px; padding: 6px 10px; border-radius: 999px; border:1px solid rgba(154,163,178,.18); color: var(--muted); }
+
+    /* ensure cover image fills the top half and keeps rounded top corners */
+    .cover img{
+      width: 100%;
+      height: 100%;
+      max-height: 120px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      transition: transform .3s ease;
+    }
+    .card:hover .cover img{ transform: scale(1.05); }
 
     .link { text-decoration:none; color: var(--text); }
     .btn-primary { background: linear-gradient(180deg, #1a2750, #142348); border-color: rgba(122,162,255,.5); }
@@ -120,7 +159,33 @@
     dialog { width: min(860px, 92vw); border: none; border-radius: 18px; padding: 0; background: var(--card); color: var(--text); box-shadow: var(--shadow); }
     dialog::backdrop { background: rgba(0,0,0,.55); backdrop-filter: blur(3px); }
     .modal { display: grid; grid-template-columns: 240px 1fr; gap: 18px; padding: 18px; }
-    .modal .cover { height: 100%; border-radius: 12px; }
+    .modal .cover {
+      background: none;
+      min-width: 180px;
+      max-width: 240px;
+      min-height: 180px;
+      max-height: 240px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+    .modal .cover img {
+      width: 100%;
+      height: 100%;
+      max-width: 240px;
+      max-height: 240px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: none;
+      border-radius: 16px;
+      box-shadow: none;
+    }
     .modal h2 { margin: 0; }
     .modal .desc { color: var(--muted); }
     .modal .row { justify-content: flex-start; }
@@ -128,18 +193,6 @@
 
     /* ====== footer ====== */
     footer { border-top: 1px solid rgba(154,163,178,.12); color: var(--muted); padding: 18px 20px; text-align:center; }
-
-    /* COVERS (IMG) */
-    .cover img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      border-top-left-radius:16px;
-      border-top-right-radius:16px;
-      transition: transform .3s ease;
-    }
-    .card:hover .cover img{ transform: scale(1.05); }
 
     /* RWD */
     @media (max-width: 720px) {
@@ -230,7 +283,7 @@
         id: '1',
         title: 'To be',
         author: 'Mateusz Węglewski',
-        year: 2024,
+        year: 2023,
         tags: ['a1','a0'],
         description: 'Elementary to be worksheet',
         coverUrl: 'gog_cover.png',
@@ -241,7 +294,7 @@
         id: '2',
         title: 'To have got',
         author: 'Mateusz Węglewski',
-        year: 2024,
+        year: 2023,
         tags: ['a1','a0'],
         description: 'Elementary to have got worksheet',
         coverUrl: 'gog_cover.png',
@@ -255,7 +308,7 @@
         year: 2024,
         tags: ['who','knows'],
         description: 'You will find out, soon',
-        coverEmoji: '🐟',
+        coverUrl: '',
         url: 'sth.pdf',
         format: 'PDF'
       }
@@ -316,6 +369,7 @@
         img.style.width = '100%';
         img.style.height = '100%';
         img.style.objectFit = 'cover';
+        img.style.objectPosition = 'top';
         img.style.display = 'block';
         cover.innerHTML = '';
         cover.appendChild(img);
@@ -367,7 +421,8 @@
         img.loading = 'lazy';
         img.style.width = '100%';
         img.style.height = '100%';
-        img.style.objectFit = 'cover';
+        img.style.objectFit = 'contain';
+        img.style.objectPosition = 'center';
         img.style.display = 'block';
         coverBox.appendChild(img);
       } else {
