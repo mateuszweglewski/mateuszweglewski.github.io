@@ -337,12 +337,45 @@
       {
         id: '6',
         title: 'r3dh3rr1n6',
-        author: 'Mateusz Węglewski',
-        year: 2024,
+        author: 'Mateusz Węglewski, Anita Drobisz-Węglewska',
+        year: 2025,
         tags: ['who','knows'],
         description: 'You will find out, soon',
         coverUrl: '',
         url: 'sth.pdf',
+        format: 'PDF'
+      },
+      {
+        id: '7',
+        title: 'r3dh3rr1n6',
+        author: 'Mateusz Węglewski, Anita Drobisz-Węglewska',
+        year: 2025,
+        tags: ['who','knows'],
+        description: 'You will find out, soon',
+        coverUrl: '',
+        url: 'sth.pdf',
+        format: 'PDF'
+      },
+      {
+        id: '8',
+        title: 'Demonstrative pronouns',
+        author: 'Mateusz Węglewski',
+        year: 2024,
+        tags: ['a0','a1'],
+        description: 'This/that/these/those worksheet',
+        coverUrl: '',
+        url: 'gog_demonstratives.pdf',
+        format: 'PDF'
+      },
+      {
+        id: '9',
+        title: 'Question tags',
+        author: 'Mateusz Węglewski',
+        year: 2023,
+        tags: ['b1','b2'],
+        description: 'Question tags worksheet',
+        coverUrl: '',
+        url: 'gog_qtags.pdf',
         format: 'PDF'
       }
     ];
@@ -409,8 +442,9 @@
       } else {
         cover.textContent = book.coverEmoji || '📖';
       }
+      const metaText = [book.author, book.year ? `• ${book.year}` : ''].filter(Boolean).join(' ');
       $('.title', node).textContent = book.title;
-      $('.meta', node).innerHTML = `${book.author ? `<span>${book.author}</span>`:''}${book.year?`<span>• ${book.year}</span>`:''}`;
+      $('.meta', node).innerHTML = metaText ? `<span>${metaText}</span>` : '';
       $('.btn-read', node).href = book.url;
       $('[data-action="info"]', node).onclick = () => openModal(book);
       return node;
