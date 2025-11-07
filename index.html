@@ -299,11 +299,17 @@
       const node = tpl.content.firstElementChild.cloneNode(true);
       node.dataset.id = book.id;
       const cover = $('.cover', node);
-      if(book.coverUrl){
-        cover.style.backgroundImage = `url(${book.coverUrl})`;
-        cover.style.backgroundSize = 'cover';
-        cover.style.backgroundPosition = 'center';
-        cover.textContent = '';
+      if (book.coverUrl) {
+        const img = document.createElement('img');
+        img.src = book.coverUrl;
+        img.alt = book.title;
+        img.loading = 'lazy';
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'cover';
+        img.style.display = 'block';
+        cover.innerHTML = '';
+        cover.appendChild(img);
       } else {
         cover.textContent = book.coverEmoji || '📖';
       }
