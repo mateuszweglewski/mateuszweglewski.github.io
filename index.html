@@ -128,6 +128,18 @@
     /* ====== footer ====== */
     footer { border-top: 1px solid rgba(154,163,178,.12); color: var(--muted); padding: 18px 20px; text-align:center; }
 
+    /* COVERS (IMG) */
+    .cover img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-top-left-radius:16px;
+      border-top-right-radius:16px;
+      transition: transform .3s ease;
+    }
+    .card:hover .cover img{ transform: scale(1.05); }
+
     /* RWD */
     @media (max-width: 720px) {
       .controls { justify-content: stretch; }
@@ -220,7 +232,7 @@
         year: 2024,
         tags: ['a1','a0'],
         description: 'Elementary to be worksheet',
-        coverEmoji: 'gog_cover.png', 
+        coverUrl: 'gog_cover.png',
         url: 'gog_to_be.pdf',
         format: 'PDF'
       },
@@ -231,7 +243,7 @@
         year: 2024,
         tags: ['a1','a0'],
         description: 'Elementary to have got worksheet',
-        coverEmoji: 'gog_cover.png', 
+        coverUrl: 'gog_cover.png',
         url: 'gog_to_have_got.pdf',
         format: 'PDF'
       },
@@ -242,7 +254,7 @@
         year: 2024,
         tags: ['who','knows'],
         description: 'You will find out, soon',
-        coverEmoji: '🐟', 
+        coverEmoji: '🐟',
         url: 'sth.pdf',
         format: 'PDF'
       }
@@ -252,11 +264,7 @@
     const $ = (sel, root=document) => root.querySelector(sel);
     const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
-    const state = {
-      q: '',
-      tag: null,
-      sort: 'recent'
-    };
+    const state = { q: '', tag: null, sort: 'recent' };
 
     const by = {
       recent: (a,b) => (b.year??0) - (a.year??0) || a.title.localeCompare(b.title),
@@ -288,7 +296,7 @@
         el.onclick = () => { state.tag = state.tag===t ? null : t; render(); };
         return el;
       }
-      box.appendChild(make('')); // reset placeholder
+      box.appendChild(make(''));
       box.firstChild.textContent = 'All';
       box.firstChild.className = 'tag'+(state.tag===null?' active':'');
       allTags.forEach(t => box.appendChild(make(t)));
@@ -339,6 +347,7 @@
     function openModal(b){
       $('#dlgTitle').textContent = b.title;
       $('#dlgDesc').textContent = b.description || '';
+      $('#dlgAuthor').textContent = b.author || '';
       $('#dlgYear').textContent = b.year ? `Year: ${b.year}` : 'Year: —';
       $('#dlgFormat').textContent = b.format || '—';
       const tagsBox = $('#dlgTags');
@@ -347,13 +356,22 @@
         const el = document.createElement('span');
         el.className = 'tag'; el.textContent = t; tagsBox.appendChild(el);
       });
-      const cover = $('#dlgCover');
-      if(b.coverUrl){
-        cover.style.backgroundImage = `url(${b.coverUrl})`;
-        cover.style.backgroundSize = 'cover';
-        cover.style.backgroundPosition = 'center';
-        cover.textContent = '';
-      } else { cover.textContent = b.coverEmoji || '📖'; cover.style.background='linear-gradient(135deg,#182340,#0e1426)'; }
+      const coverBox = $('#dlgCover');
+      coverBox.innerHTML = '';
+      coverBox.style.background = 'linear-gradient(135deg,#182340,#0e1426)';
+      if (b.coverUrl) {
+        const img = document.createElement('img');
+        img.src = b.coverUrl;
+        img.alt = b.title;
+        img.loading = 'lazy';
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'cover';
+        img.style.display = 'block';
+        coverBox.appendChild(img);
+      } else {
+        coverBox.textContent = b.coverEmoji || '📖';
+      }
       const open = $('#dlgOpen'); open.href = b.url;
       const dl = $('#dlgDownload'); dl.href = b.url; dl.download = (b.title||'ebook').replace(/\s+/g,'-').toLowerCase();
       const dlg = $('#dlg');
@@ -363,7 +381,6 @@
     $('#dlg').addEventListener('click', (e)=>{
       const dlg = $('#dlg');
       const rect = dlg.getBoundingClientRect();
-      // close clicking somewhere else
       if(e.clientY < rect.top || e.clientY > rect.bottom || e.clientX < rect.left || e.clientX > rect.right){
         dlg.close();
       }
