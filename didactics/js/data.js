@@ -31,14 +31,14 @@ window.SUBJECTS = {
     tagline: 'Algebra, functions & exam-style problem sets',
     items: []
   },
-  physics: {
-    key: 'physics', name: 'Physics', icon: '⚛️', accent: '#4fd1c5',
-    tagline: 'Mechanics, waves, and energy systems (incl. PV/DC-AC)',
-    items: []
-  },
   webapps: {
     key: 'webapps', name: 'Web Apps', icon: '💻', accent: '#ff9e64',
     tagline: 'Node.js, Django, Docker & CI/CD — INF.04 curriculum',
+    items: []
+  },
+  physics: {
+    key: 'physics', name: 'Physics', icon: '⚛️', accent: '#4fd1c5',
+    tagline: 'Mechanics, waves, and energy systems (incl. PV/DC-AC)',
     items: []
   },
   italian: {
