@@ -161,7 +161,7 @@ function applyAccent(subj) {
   }
 }
 
-function render() {
+function render(push = false) {
   const inSubject = !!state.subject;
   $('#hubView').hidden = inSubject;
   $('#libraryView').hidden = !inSubject;
@@ -178,17 +178,17 @@ function render() {
   } else {
     renderHub();
   }
-  syncHash();
+  syncHash(push);
 }
 
 function goHub() {
   state.subject = null; state.q = ''; state.tag = null; state.sort = 'recent';
-  render();
+  render(true);
 }
 function goSubject(key) {
   if (!SUBJECTS[key]) return;
   state.subject = key; state.q = ''; state.tag = null; state.sort = 'recent';
-  render();
+  render(true);
 }
 
 // ====== modal ======
@@ -246,14 +246,19 @@ $('#clearBtn').addEventListener('click', () => {
 });
 
 // ====== hash routing ======
-function syncHash() {
+function syncHash(push = false) {
   const params = new URLSearchParams();
   if (state.subject) params.set('subject', state.subject);
   if (state.q) params.set('q', state.q);
   if (state.tag) params.set('tag', state.tag);
   if (state.sort && state.sort !== 'recent') params.set('sort', state.sort);
   const h = params.toString();
-  history.replaceState(null, '', h ? `#${h}` : ' ');
+  const url = h ? `#${h}` : ' ';
+  if (push) {
+    history.pushState(null, '', url);
+  } else {
+    history.replaceState(null, '', url);
+  }
 }
 function readHash() {
   const h = location.hash.replace(/^#/, '');
