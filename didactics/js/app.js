@@ -87,6 +87,7 @@ function cardFrom(item) {
   node.style.setProperty('--sc', currentSubject().accent);
 
   const cover = $('.cover', node);
+  const badge = $('.format-badge', cover);
   if (item.coverUrl) {
     const img = document.createElement('img');
     img.src = item.coverUrl;
@@ -97,8 +98,9 @@ function cardFrom(item) {
   } else {
     cover.textContent = item.coverEmoji || currentSubject().icon;
   }
+  if (badge) cover.appendChild(badge);
 
-  $('.format-badge', node).textContent = item.format || '';
+  badge.textContent = item.format || '';
   const metaText = [item.author, item.year ? `• ${item.year}` : ''].filter(Boolean).join(' ');
   $('.title', node).textContent = item.title;
   $('.meta', node).innerHTML = metaText ? `<span>${metaText}</span>` : '';
