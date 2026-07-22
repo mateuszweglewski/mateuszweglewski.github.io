@@ -144,7 +144,7 @@ main { max-width: 1120px; margin: 0 auto 90px; padding: 0 20px; }
   box-shadow: 0 0 0 8px color-mix(in srgb, var(--sc) 16%, transparent), 0 14px 28px rgba(0,0,0,.5);
 }
 .node.node--logo {
-  width: 172px; height: 96px; border-radius: 18px; padding: 14px;
+  width: 188px; height: 108px; border-radius: 12px; padding: 22px;
   background: color-mix(in srgb, var(--sc) 10%, var(--card));
   box-shadow: 0 0 0 6px color-mix(in srgb, var(--sc) 6%, transparent), var(--shadow-soft);
 }
@@ -158,7 +158,7 @@ main { max-width: 1120px; margin: 0 auto 90px; padding: 0 20px; }
   width: 100%; height: 100%; object-fit: contain; display: block;
 }
 .subject-intro .ic.ic--logo {
-  width: auto; height: 50px; min-width: 90px; padding: 4px 10px;
+  width: auto; height: 56px; min-width: 100px; padding: 6px 14px;
   background: transparent; border-color: transparent;
 }
 .stage-label { margin-top: 14px; display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center; }

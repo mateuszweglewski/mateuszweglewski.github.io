@@ -84,7 +84,7 @@ function renderPipeline(node) {
     if (child.logoUrl) {
       btn.textContent = '';
       btn.classList.add('node--logo');
-      el.style.setProperty('--line-top', '52px');
+      el.style.setProperty('--line-top', '58px');
       const img = document.createElement('img');
       img.src = child.logoUrl;
       img.alt = child.name;
