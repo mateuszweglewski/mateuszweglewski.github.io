@@ -81,7 +81,17 @@ function renderPipeline(node) {
     el.dataset.key = child.key;
 
     const btn = $('.node', el);
-    btn.textContent = child.icon;
+    if (child.logoUrl) {
+      btn.textContent = '';
+      btn.classList.add('node--logo');
+      const img = document.createElement('img');
+      img.src = child.logoUrl;
+      img.alt = child.name;
+      img.className = 'node-logo';
+      btn.appendChild(img);
+    } else {
+      btn.textContent = child.icon;
+    }
     btn.setAttribute('aria-label', `Open ${child.name}`);
     btn.addEventListener('click', () => goInto(child.key));
 
@@ -147,10 +157,24 @@ function cardFrom(item, node) {
   return el;
 }
 
+function setIconContent(el, node) {
+  el.innerHTML = '';
+  el.classList.toggle('ic--logo', !!node.logoUrl);
+  if (node.logoUrl) {
+    const img = document.createElement('img');
+    img.src = node.logoUrl;
+    img.alt = node.name;
+    img.className = 'ic-logo';
+    el.appendChild(img);
+  } else {
+    el.textContent = node.icon;
+  }
+}
+
 function renderLibrary(node) {
   if (!node) return;
 
-  $('#introIcon').textContent = node.icon;
+  setIconContent($('#introIcon'), node);
   $('#introName').textContent = node.name;
   $('#introTagline').textContent = node.tagline || '';
 

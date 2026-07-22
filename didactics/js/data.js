@@ -37,11 +37,13 @@ window.SUBJECTS = {
           laboratories: {
             key: 'laboratories', name: 'Laboratories', icon: '🧪', accent: '#ff9e64',
             tagline: 'Hands-on lab exercises',
+            logoUrl: '../logo_labs.png',
             items: []
           },
           lectures: {
             key: 'lectures', name: 'Lectures', icon: '📖', accent: '#ff9e64',
             tagline: 'Lecture notes & slides',
+            logoUrl: '../logo_lectures.png',
             items: []
           }
         }
@@ -53,11 +55,13 @@ window.SUBJECTS = {
           laboratories: {
             key: 'laboratories', name: 'Laboratories', icon: '🧪', accent: '#ff9e64',
             tagline: 'Hands-on lab exercises',
+            logoUrl: '../logo_labs.png',
             items: []
           },
           lectures: {
             key: 'lectures', name: 'Lectures', icon: '📖', accent: '#ff9e64',
             tagline: 'Lecture notes & slides',
+            logoUrl: '../logo_lectures.png',
             items: []
           }
         }
