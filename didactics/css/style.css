@@ -127,7 +127,7 @@ main { max-width: 1120px; margin: 0 auto 90px; padding: 0 20px; }
 @keyframes stageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 .stage:not(:last-child)::after {
-  content: ''; position: absolute; top: 34px; left: 50%; width: 100%; height: 2px;
+  content: ''; position: absolute; top: var(--line-top, 34px); left: 50%; width: 100%; height: 2px;
   background: linear-gradient(90deg, var(--border-strong), var(--border-strong));
   z-index: 0;
 }
@@ -144,7 +144,12 @@ main { max-width: 1120px; margin: 0 auto 90px; padding: 0 20px; }
   box-shadow: 0 0 0 8px color-mix(in srgb, var(--sc) 16%, transparent), 0 14px 28px rgba(0,0,0,.5);
 }
 .node.node--logo {
-  width: 116px; height: 58px; border-radius: 16px; padding: 6px;
+  width: 172px; height: 96px; border-radius: 18px; padding: 14px;
+  background: color-mix(in srgb, var(--sc) 10%, var(--card));
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--sc) 6%, transparent), var(--shadow-soft);
+}
+.node.node--logo:hover, .node.node--logo:focus-visible {
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--sc) 12%, transparent), 0 14px 28px rgba(0,0,0,.5);
 }
 .node-logo {
   width: 100%; height: 100%; object-fit: contain; display: block;
