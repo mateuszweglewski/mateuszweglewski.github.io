@@ -26,24 +26,42 @@ window.SUBJECTS = {
       { id:'21', title:'Modal Verbs', author:'Mateusz Węglewski', year:2026, tags:['a1','a2','b1','b2','c1'], description:'Modal verbs worksheet', coverUrl:'../gog_cover.png', url:'../gog_modals.pdf', format:'PDF' }
     ]
   },
-  math: {
-    key: 'math', name: 'Math', icon: '📐', accent: '#c792ea',
-    tagline: 'Algebra, functions & exam-style problem sets',
-    items: []
-  },
   webapps: {
     key: 'webapps', name: 'Web Apps', icon: '💻', accent: '#ff9e64',
-    tagline: 'Node.js, Django, Docker & CI/CD — INF.04 curriculum',
-    items: []
-  },
-  physics: {
-    key: 'physics', name: 'Physics', icon: '⚛️', accent: '#4fd1c5',
-    tagline: 'Mechanics, waves, and energy systems (incl. PV/DC-AC)',
-    items: []
-  },
-  italian: {
-    key: 'italian', name: 'Italian', icon: '🇮🇹', accent: '#6ddd8c',
-    tagline: 'Vocabulary, grammar drills & conversation practice',
-    items: []
+    tagline: 'ZSM-E Zywiec 2026/2027 Laboratory classes',
+    children: {
+      grade4: {
+        key: 'grade4', name: '4th grade', icon: '🎓', accent: '#ff9e64',
+        tagline: 'Web Apps — 4th grade materials',
+        children: {
+          laboratories: {
+            key: 'laboratories', name: 'Laboratories', icon: '🧪', accent: '#ff9e64',
+            tagline: 'Hands-on lab exercises',
+            items: []
+          },
+          lectures: {
+            key: 'lectures', name: 'Lectures', icon: '📖', accent: '#ff9e64',
+            tagline: 'Lecture notes & slides',
+            items: []
+          }
+        }
+      },
+      grade5: {
+        key: 'grade5', name: '5th grade', icon: '🎓', accent: '#ff9e64',
+        tagline: 'Web Apps — 5th grade materials',
+        children: {
+          laboratories: {
+            key: 'laboratories', name: 'Laboratories', icon: '🧪', accent: '#ff9e64',
+            tagline: 'Hands-on lab exercises',
+            items: []
+          },
+          lectures: {
+            key: 'lectures', name: 'Lectures', icon: '📖', accent: '#ff9e64',
+            tagline: 'Lecture notes & slides',
+            items: []
+          }
+        }
+      }
+    }
   }
 };
