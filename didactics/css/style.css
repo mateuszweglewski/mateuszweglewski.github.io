@@ -158,8 +158,8 @@ main { max-width: 1120px; margin: 0 auto 90px; padding: 0 20px; }
   width: 100%; height: 100%; object-fit: contain; display: block;
 }
 .subject-intro .ic.ic--logo {
-  width: auto; height: 56px; min-width: 100px; padding: 6px 14px;
-  background: transparent; border-color: transparent;
+  width: auto; height: 34px; min-width: 0; padding: 0;
+  background: transparent; border: none;
 }
 .stage-label { margin-top: 14px; display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center; }
 .stage-name { font-family: var(--font-display); font-weight: 600; font-size: 15px; }
