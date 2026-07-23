@@ -3,218 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Matt Weglewski's didactics</title>
-  <meta name="description" content="Matt's Didactics" />
+  <title>Matt Weglewski's Didactics</title>
+  <meta name="description" content="Matt's Didactics - materials by subject" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='80'>📚</text></svg>">
-  <style>
-    /* ====== THEME ====== */
-    :root {
-      --bg: #0b0d12;           /* bg */
-      --bg-elev: #11141b;      /* bg2 */
-      --card: #141823;         /* cards */
-      --muted: #9aa3b2;        /* ht */
-      --text: #e6eaf2;         /* mt */
-      --primary: #7aa2ff;      /* acc */
-      --primary-2: #9bb7ff;    /* lacc */
-      --danger: #ff6b6b;
-      --ok: #4fd1c5;
-      --ring: 0 0 0 3px rgba(122,162,255,.25);
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.45);
-      --shadow-soft: 0 6px 18px rgba(0,0,0,.3);
-    }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      background: radial-gradient(1200px 800px at 10% 0%, #0d1120 0%, var(--bg) 55%) fixed;
-      color: var(--text);
-      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
-      letter-spacing: .1px;
-    }
-
-    /* ====== Header ====== */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(11,13,18,.9), rgba(11,13,18,.6) 60%, rgba(11,13,18,0));
-      border-bottom: 1px solid rgba(154,163,178,.08);
-    }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 18px 20px; }
-    .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-
-    .brand {
-      display: flex; align-items: center; gap: 12px; min-width: 220px;
-    }
-    .brand .logo {
-      width: 40px; height: 40px; display: grid; place-items: center;
-      background: linear-gradient(135deg, #11192b, #0f1322);
-      border: 1px solid rgba(154,163,178,.12);
-      border-radius: 12px; box-shadow: var(--shadow-soft);
-      font-size: 20px;
-    }
-    .brand h1 { font-size: 18px; margin: 0; letter-spacing: .3px; }
-    .brand small { display:block; color: var(--muted); margin-top:-4px; font-size:12px; }
-
-    /* ====== Controls ====== */
-    .controls { display:flex; gap:10px; flex:1; justify-content:flex-end; flex-wrap:wrap; }
-    .input, select, button {
-      background: var(--bg-elev);
-      color: var(--text);
-      border: 1px solid rgba(154,163,178,.15);
-      border-radius: 12px;
-      padding: 10px 12px;
-      outline: none;
-    }
-    .input:focus, select:focus { box-shadow: var(--ring); border-color: rgba(122,162,255,.6); }
-
-    .search { display:flex; align-items:center; gap:8px; flex:1; min-width: 220px; }
-    .search input { flex:1; background: transparent; border:none; color:var(--text); font-size:14px; }
-    .search .icon { opacity:.7; }
-
-    .btn {
-      padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(154,163,178,.15);
-      background: linear-gradient(180deg, #141a2a, #101525);
-      cursor: pointer; transition: .2s transform, .2s background;
-    }
-    .btn:hover { transform: translateY(-1px); }
-
-    /* ====== tags ====== */
-    .tags { display:flex; gap:8px; flex-wrap:wrap; margin: 10px 0 0; }
-    .tag {
-      font-size:12px; padding:6px 10px; border-radius: 999px; border:1px solid rgba(154,163,178,.18);
-      background:#101523; color: var(--primary-2); cursor:pointer; user-select:none;
-    }
-    .tag.active { background: #17203a; color: #c8d5ff; border-color: rgba(122,162,255,.5); box-shadow: var(--ring); }
-
-    /* ====== card webs ====== */
-    main { max-width: 1100px; margin: 18px auto 80px; padding: 0 20px; }
-    .grid { display: grid; grid-template-columns: repeat( auto-fill, minmax(240px, 1fr) ); gap: 16px; }
-
-    .card {
-      position: relative;
-      /* keep border and shadow on the card shell */
-      border: 1px solid rgba(154,163,178,.14);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-      min-height: 260px;
-      /* visual split: cover in the top half, content on a uniform panel below */
-      background: transparent; /* background for the card shell comes from its parts */
-    }
-    .card:hover { transform: translateY(-2px); border-color: rgba(122,162,255,.35); box-shadow: 0 16px 40px rgba(0,0,0,.55); }
-
-    /* cover now takes the top 50% of the card */
-    .cover {
-      flex: none;
-      height: 120px;
-      min-height: 120px;
-      max-height: 120px;
-      background: linear-gradient(135deg, #182340, #0e1426);
-      display: grid;
-      place-items: center;
-      font-size: 46px;
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      overflow: hidden;
-    }
-
-    /* content is a separate panel with a solid background */
-    .content {
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      background: var(--card);
-    }
-
-    .title { font-weight: 650; letter-spacing:.2px; }
-    .meta { font-size: 12px; color: var(--muted); display:flex; gap:8px; flex-wrap:wrap; }
-    .actions { margin-top: auto; display:flex; gap:8px; }
-    .pill { font-size: 12px; padding: 6px 10px; border-radius: 999px; border:1px solid rgba(154,163,178,.18); color: var(--muted); }
-
-    /* ensure cover image fills the top half and keeps rounded top corners */
-    .cover img{
-      width: 100%;
-      height: 100%;
-      max-height: 120px;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-      border-top-left-radius: 16px;
-      border-top-right-radius: 16px;
-      transition: transform .3s ease;
-    }
-    .card:hover .cover img{ transform: scale(1.05); }
-
-    .link { text-decoration:none; color: var(--text); }
-    .btn-primary { background: linear-gradient(180deg, #1a2750, #142348); border-color: rgba(122,162,255,.5); }
-    .btn-outline { background: transparent; }
-
-    /* ====== modal ====== */
-    dialog { width: min(860px, 92vw); border: none; border-radius: 18px; padding: 0; background: var(--card); color: var(--text); box-shadow: var(--shadow); }
-    dialog::backdrop { background: rgba(0,0,0,.55); backdrop-filter: blur(3px); }
-    .modal { display: grid; grid-template-columns: 240px 1fr; gap: 18px; padding: 18px; }
-    .modal .cover {
-      background: none;
-      min-width: 180px;
-      max-width: 240px;
-      min-height: 180px;
-      max-height: 240px;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-      overflow: hidden;
-      margin: 0 auto;
-    }
-    .modal .cover img {
-      width: 100%;
-      height: 100%;
-      max-width: 240px;
-      max-height: 240px;
-      object-fit: contain;
-      object-position: center;
-      display: block;
-      background: none;
-      border-radius: 16px;
-      box-shadow: none;
-    }
-    .modal h2 { margin: 0; }
-    .modal .desc { color: var(--muted); }
-    .modal .row { justify-content: flex-start; }
-    .modal .close { position:absolute; top:12px; right:12px; }
-
-    /* ====== footer ====== */
-    footer { border-top: 1px solid rgba(154,163,178,.12); color: var(--muted); padding: 18px 20px; text-align:center; }
-
-    /* RWD */
-    @media (max-width: 720px) {
-      .controls { justify-content: stretch; }
-      .modal { grid-template-columns: 1fr; }
-      .brand h1 { font-size: 16px; }
-    }
-  </style>
+  <link rel="stylesheet" href="didactics/css/style.css?v=4">
 </head>
 <body>
 
   <header>
     <div class="wrap">
       <div class="row">
-        <div class="brand">
+        <button class="brand" id="brandBtn" title="Back to subjects">
           <div class="logo" aria-hidden="true">📚</div>
           <div>
             <h1>Didactics</h1>
             <small>R 3 D H 3 R R 1 N 6</small>
           </div>
+        </button>
+
+        <div class="crumb" id="crumb" hidden>
+          <button class="back" id="backBtn">← back</button>
+          <span class="path"><b id="crumbIcon"></b> <span id="crumbName"></span></span>
         </div>
-        <div class="controls">
+
+        <div class="controls" id="libraryControls" hidden>
           <div class="search input" role="search">
             <span class="icon">🔎</span>
             <input id="q" type="search" placeholder="Search..." autocomplete="off" />
@@ -224,7 +36,7 @@
             <option value="az">Title A–Z</option>
             <option value="za">Title Z–A</option>
           </select>
-          <button id="clear" class="btn" title="Disable filters">Disable</button>
+          <button id="clearBtn" class="btn" title="Disable filters">Disable</button>
         </div>
         <div id="tags" class="tags" aria-label="Filter by tags"></div>
       </div>
@@ -232,17 +44,51 @@
   </header>
 
   <main>
-    <div id="grid" class="grid" aria-live="polite"></div>
+    <!-- ====== HUB VIEW — subject picker as a build pipeline ====== -->
+    <section id="hubView">
+      <div class="hero">
+        <p class="eyebrow" id="heroEyebrow">select-subject.sh</p>
+        <h2 id="heroTitle">Choose your subject.</h2>
+        <p class="lede" id="heroLede">Worksheets, mock exams and lab material, organised by subject. Pick a stage to open it.</p>
+      </div>
+      <div id="pipeline" class="pipeline" role="list"></div>
+    </section>
+
+    <!-- ====== LIBRARY VIEW ====== -->
+    <section id="libraryView" hidden>
+      <div class="subject-intro">
+        <span class="ic" id="introIcon"></span>
+        <div>
+          <h2 id="introName"></h2>
+          <p id="introTagline"></p>
+        </div>
+        <span class="status-pill" id="introStatus"></span>
+      </div>
+      <div id="grid" class="grid" aria-live="polite"></div>
+    </section>
   </main>
 
   <footer>
     © <span id="year"></span> • by Mateusz Węglewski • <a class="link" href="https://github.com/mateuszweglewski" target="_blank" rel="noopener">See my other projects</a>
   </footer>
 
-  <!-- ====== Card Themes ====== -->
+  <!-- ====== templates ====== -->
+  <template id="tpl-stage">
+    <div class="stage" role="listitem">
+      <button class="node" type="button"></button>
+      <div class="stage-label">
+        <span class="stage-name"></span>
+        <span class="stage-status"></span>
+      </div>
+    </div>
+  </template>
+
   <template id="tpl-card">
     <article class="card" data-id="">
-      <div class="cover" aria-hidden="true">📖</div>
+      <div class="cover" aria-hidden="true">
+        📖
+        <span class="format-badge"></span>
+      </div>
       <div class="content">
         <div class="title"></div>
         <div class="meta"></div>
@@ -276,401 +122,7 @@
     </div>
   </dialog>
 
-  <script>
-    // ====== Library config ======
-    const books = [
-      {
-        id: '1',
-        title: 'To be',
-        author: 'Mateusz Węglewski',
-        year: 2023,
-        tags: ['a1','a0'],
-        description: 'Elementary to be worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_to_be.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '2',
-        title: 'To have got',
-        author: 'Mateusz Węglewski',
-        year: 2023,
-        tags: ['a1','a0'],
-        description: 'Elementary to have got worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_to_have_got.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '3',
-        title: 'Plural forms',
-        author: 'Mateusz Węglewski',
-        year: 2023,
-        tags: ['a1','a0', 'a2'],
-        description: 'Regular and irregular plural forms worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_plurals.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '4',
-        title: 'The Present Simple Tense',
-        author: 'Mateusz Węglewski',
-        year: 2024,
-        tags: ['a1','a2', 'b1'],
-        description: 'The Present Simple tense worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_pr_simple.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '5',
-        title: 'The Present Progressive Tense',
-        author: 'Mateusz Węglewski',
-        year: 2024,
-        tags: ['a1','a2', 'b1'],
-        description: 'The Present Progressive tense worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_pr_prog.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '6',
-        title: 'Matura ZSM-E 2025 Poziom Podstawowy',
-        author: 'Mateusz Węglewski, Anita Drobisz-Węglewska',
-        year: 2025,
-        tags: ['b1', 'b2'],
-        description: 'Official mock matura exam - ZSM-E 2025',
-        coverUrl: 'matura2025basic.png',
-        url: 'matura_zsme_25_basic_bl.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '7',
-        title: 'Matura ZSM-E 2025 Poziom Rozszerzony',
-        author: 'Mateusz Węglewski, Anita Drobisz-Węglewska',
-        year: 2025,
-        tags: ['b1','b2'],
-        description: 'Official mock matura exam - ZSM-E 2025',
-        coverUrl: 'matura2025extended.png',
-        url: 'matura_zsme_25_extended_bl.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '8',
-        title: 'Demonstrative pronouns',
-        author: 'Mateusz Węglewski',
-        year: 2024,
-        tags: ['a0','a1'],
-        description: 'This/that/these/those worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_demonstratives.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '9',
-        title: 'Question tags',
-        author: 'Mateusz Węglewski',
-        year: 2023,
-        tags: ['b1','b2'],
-        description: 'Question tags worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_qtags.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '10',
-        title: 'Cleft sentences',
-        author: 'Mateusz Węglewski',
-        year: 2025,
-        tags: ['c1','c2'],
-        description: 'Cleft sentences worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_clefts.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '11',
-        title: 'Used',
-        author: 'Mateusz Węglewski',
-        year: 2024,
-        tags: ['a2','b1', 'b2', 'c1'],
-        description: 'Used to, Be used to, Get used to, Would, Present Simple worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_used.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '12',
-        title: 'Unreal Past',
-        author: 'Mateusz Węglewski',
-        year: 2024,
-        tags: ['b2', 'c1', 'c2'],
-        description: 'Unreal Past worksheet, including: wish, if only, as if/though, would rather/sooner, had better, suppose/supposing, prefer & rather expressions, conditionals ',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_unreal_p.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '13',
-        title: 'Correlative conjunctions',
-        author: 'Mateusz Węglewski',
-        year: 2024,
-        tags: ['b1', 'b2'],
-        description: 'Correlative conjunctions worksheet, including: both/and, either/or, neither/nor',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_cor_coj.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '14',
-        title: 'Present Simple vs Present Progressive',
-        author: 'Mateusz Węglewski',
-        year: 2025,
-        tags: ['a2', 'b1', 'b2'],
-        description: 'Present Simple vs Present Progressive worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_pr_simple_pr_prog.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '15',
-        title: 'Passive Voice',
-        author: 'Mateusz Węglewski',
-        year: 2025,
-        tags: ['a2', 'b1', 'b2', 'c1'],
-        description: 'Passive Voice worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_passive.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '16',
-        title: 'Fronting',
-        author: 'Mateusz Węglewski',
-        year: 2025,
-        tags: ['c1', 'c2'],
-        description: 'Fronting worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_fronting.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '17',
-        title: 'The Present Perfect Simple Tense',
-        author: 'Mateusz Węglewski',
-        year: 2024,
-        tags: ['a2', 'b1'],
-        description: 'The Present Perfect Simple Tense worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_pr_per_simp.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '18',
-        title: 'Gradiation of adjectives',
-        author: 'Mateusz Węglewski',
-        year: 2026,
-        tags: ['a1', 'a2', 'b1', 'b2', 'c1'],
-        description: 'Gradiation of adjectives worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_grad_adj.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '19',
-        title: 'The Present Perfect Progressive Tense',
-        author: 'Mateusz Węglewski',
-        year: 2026,
-        tags: ['b1', 'b2'],
-        description: 'The Present Perfect Progressive Tense worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_pr_perf_prog.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '20',
-        title: 'Key Word Transformations - Extended Matura',
-        author: 'CKE',
-        year: 2026,
-        tags: ['b1', 'b2'],
-        description: 'Key Word Transformations - Extended Matura (categorised)',
-        coverUrl: '',
-        url: 'kwt_m_ex.pdf',
-        format: 'PDF'
-      },
-      {
-        id: '21',
-        title: 'Modal Verbs',
-        author: 'Mateusz Węglewski',
-        year: 2026,
-        tags: ['a1', 'a2', 'b1', 'b2', 'c1'],
-        description: 'Modal verbs worksheet',
-        coverUrl: 'gog_cover.png',
-        url: 'gog_modals.pdf',
-        format: 'PDF'
-      }
-    ];
-
-    // ====== Tools ======
-    const $ = (sel, root=document) => root.querySelector(sel);
-    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
-
-    const state = { q: '', tag: null, sort: 'recent' };
-
-    const by = {
-      recent: (a,b) => (b.year??0) - (a.year??0) || a.title.localeCompare(b.title),
-      az: (a,b) => a.title.localeCompare(b.title, 'pl', {sensitivity:'base'}),
-      za: (a,b) => b.title.localeCompare(a.title, 'pl', {sensitivity:'base'}),
-      author: (a,b) => (a.author||'').localeCompare((b.author||''), 'pl', {sensitivity:'base'})
-    };
-
-    function uniqueTags(items){
-      return [...new Set(items.flatMap(b => b.tags||[]))].sort((a,b)=>a.localeCompare(b,'pl',{sensitivity:'base'}));
-    }
-
-    function match(b){
-      const q = state.q.trim().toLowerCase();
-      const hitQ = !q || [b.title,b.author,(b.tags||[]).join(' ')].join(' ').toLowerCase().includes(q);
-      const hitT = !state.tag || (b.tags||[]).includes(state.tag);
-      return hitQ && hitT;
-    }
-
-    function renderTags(){
-      const box = $('#tags');
-      box.innerHTML = '';
-      const allTags = uniqueTags(books);
-      if(!allTags.length) return;
-      const make = (t) => {
-        const el = document.createElement('button');
-        el.className = 'tag'+(state.tag===t?' active':'');
-        el.textContent = t;
-        el.onclick = () => { state.tag = state.tag===t ? null : t; render(); };
-        return el;
-      }
-      box.appendChild(make(''));
-      box.firstChild.textContent = 'All';
-      box.firstChild.className = 'tag'+(state.tag===null?' active':'');
-      allTags.forEach(t => box.appendChild(make(t)));
-    }
-
-    function cardFrom(book){
-      const tpl = $('#tpl-card');
-      const node = tpl.content.firstElementChild.cloneNode(true);
-      node.dataset.id = book.id;
-      const cover = $('.cover', node);
-      if (book.coverUrl) {
-        const img = document.createElement('img');
-        img.src = book.coverUrl;
-        img.alt = book.title;
-        img.loading = 'lazy';
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.objectFit = 'cover';
-        img.style.objectPosition = 'top';
-        img.style.display = 'block';
-        cover.innerHTML = '';
-        cover.appendChild(img);
-      } else {
-        cover.textContent = book.coverEmoji || '📖';
-      }
-      const metaText = [book.author, book.year ? `• ${book.year}` : ''].filter(Boolean).join(' ');
-      $('.title', node).textContent = book.title;
-      $('.meta', node).innerHTML = metaText ? `<span>${metaText}</span>` : '';
-      $('.btn-read', node).href = book.url;
-      $('[data-action="info"]', node).onclick = () => openModal(book);
-      return node;
-    }
-
-    function render(){
-      const grid = $('#grid');
-      grid.innerHTML = '';
-      const list = books.filter(match).sort(by[state.sort]||by.recent);
-      if(!list.length){
-        const empty = document.createElement('div');
-        empty.className = 'pill';
-        empty.style.margin = '10px auto';
-        empty.textContent = 'Nothing found.';
-        grid.appendChild(empty);
-        return;
-      }
-      list.forEach(b => grid.appendChild(cardFrom(b)));
-    }
-
-    // ====== MODAL ======
-    function openModal(b){
-      $('#dlgTitle').textContent = b.title;
-      $('#dlgDesc').textContent = b.description || '';
-      $('#dlgAuthor').textContent = b.author || '';
-      $('#dlgYear').textContent = b.year ? `Year: ${b.year}` : 'Year: —';
-      $('#dlgFormat').textContent = b.format || '—';
-      const tagsBox = $('#dlgTags');
-      tagsBox.innerHTML = '';
-      (b.tags||[]).forEach(t=>{
-        const el = document.createElement('span');
-        el.className = 'tag'; el.textContent = t; tagsBox.appendChild(el);
-      });
-      const coverBox = $('#dlgCover');
-      coverBox.innerHTML = '';
-      coverBox.style.background = 'linear-gradient(135deg,#182340,#0e1426)';
-      if (b.coverUrl) {
-        const img = document.createElement('img');
-        img.src = b.coverUrl;
-        img.alt = b.title;
-        img.loading = 'lazy';
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.objectFit = 'contain';
-        img.style.objectPosition = 'center';
-        img.style.display = 'block';
-        coverBox.appendChild(img);
-      } else {
-        coverBox.textContent = b.coverEmoji || '📖';
-      }
-      const open = $('#dlgOpen'); open.href = b.url;
-      const dl = $('#dlgDownload'); dl.href = b.url; dl.download = (b.title||'ebook').replace(/\s+/g,'-').toLowerCase();
-      const dlg = $('#dlg');
-      dlg.showModal();
-    }
-
-    $('#dlg').addEventListener('click', (e)=>{
-      const dlg = $('#dlg');
-      const rect = dlg.getBoundingClientRect();
-      if(e.clientY < rect.top || e.clientY > rect.bottom || e.clientX < rect.left || e.clientX > rect.right){
-        dlg.close();
-      }
-    });
-    $('[data-action="close"]').onclick = () => $('#dlg').close();
-
-    // ====== UI ======
-    $('#q').addEventListener('input', (e)=>{ state.q = e.target.value; render(); });
-    $('#sort').addEventListener('change', (e)=>{ state.sort = e.target.value; render(); });
-    $('#clear').addEventListener('click', ()=>{ state.q=''; $('#q').value=''; state.tag=null; $('#sort').value='recent'; render(); });
-
-    // ====== initialise ======
-    $('#year').textContent = new Date().getFullYear();
-    renderTags();
-    render();
-
-    // ======  UX ======
-    function syncHash(){
-      const params = new URLSearchParams();
-      if(state.q) params.set('q', state.q);
-      if(state.tag) params.set('tag', state.tag);
-      if(state.sort && state.sort!=='recent') params.set('sort', state.sort);
-      const h = params.toString();
-      history.replaceState(null, '', h ? `#${h}` : ' ');
-    }
-    function readHash(){
-      const h = location.hash.replace(/^#/, '');
-      const p = new URLSearchParams(h);
-      state.q = p.get('q')||''; $('#q').value = state.q;
-      state.tag = p.get('tag');
-      state.sort = p.get('sort')||'recent'; $('#sort').value = state.sort;
-    }
-    addEventListener('hashchange', ()=>{ readHash(); render(); });
-    const _render = render; render = function(){ _render(); syncHash(); };
-    readHash(); render();
-  </script>
+  <script src="didactics/js/data.js?v=4"></script>
+  <script src="didactics/js/app.js?v=4"></script>
 </body>
 </html>
