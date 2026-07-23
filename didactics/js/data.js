@@ -28,7 +28,7 @@ window.SUBJECTS = {
   },
   webapps: {
     key: 'webapps', name: 'Web Apps', icon: '💻', accent: '#ff9e64',
-    tagline: 'ZSM-E Zywiec 2026/2027 Laboratory classes',
+    tagline: 'ZSM-E Zywiec 2026/2027 materials',
     children: {
       grade4: {
         key: 'grade4', name: '4th grade', icon: '🎓', accent: '#ff9e64',

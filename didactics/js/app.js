@@ -59,8 +59,8 @@ function renderHero(node, isRoot) {
   const lede = $('#heroLede');
   if (isRoot) {
     eyebrow.textContent = 'select-subject.sh';
-    title.textContent = 'What are you teaching or studying today?';
-    lede.textContent = 'Worksheets, mock exams and lab material, organised by subject. Pick a stage to open it.';
+    title.textContent = 'Choose your subject.';
+    lede.textContent = 'Pick a stage to open it.';
   } else {
     eyebrow.textContent = `${state.path.join('/')}/select.sh`;
     title.textContent = `Browsing ${node.name}`;
