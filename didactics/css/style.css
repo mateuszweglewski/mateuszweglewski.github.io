@@ -138,6 +138,7 @@ main { max-width: 1120px; margin: 0 auto 90px; padding: 0 20px; }
   border: 2px solid color-mix(in srgb, var(--sc) 55%, var(--border-strong));
   box-shadow: 0 0 0 6px color-mix(in srgb, var(--sc) 8%, transparent), var(--shadow-soft);
   transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  overflow: hidden; max-width: 260px;
 }
 .node:hover, .node:focus-visible {
   transform: translateY(-3px) scale(1.05);
@@ -190,7 +191,7 @@ main { max-width: 1120px; margin: 0 auto 90px; padding: 0 20px; }
   font-size: 26px; width: 50px; height: 50px; display:grid; place-items:center;
   border-radius: 13px; background: color-mix(in srgb, var(--accent) 16%, var(--card));
   border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
-  flex: none;
+  flex: none; overflow: hidden; max-width: 220px;
 }
 .subject-intro h2 { margin: 0; font-size: 23px; font-weight: 650; }
 .subject-intro p { margin: 2px 0 0; color: var(--muted); font-size: 13.5px; }
