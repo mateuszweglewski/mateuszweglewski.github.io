@@ -159,7 +159,7 @@ main { max-width: 1120px; margin: 0 auto 90px; padding: 0 20px; }
   width: 100%; height: 100%; object-fit: contain; display: block;
 }
 .subject-intro .ic.ic--logo {
-  width: 76px; height: 34px; min-width: 0; max-width: none; padding: 0;
+  width: 108px; height: 48px; min-width: 0; max-width: none; padding: 0;
   background: transparent; border: none;
 }
 .stage-label { margin-top: 14px; display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center; }
