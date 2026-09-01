@@ -6,7 +6,7 @@
   <title>Matt Weglewski's Didactics</title>
   <meta name="description" content="Matt's Didactics - materials by subject" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='80'>📚</text></svg>">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=10">
 </head>
 <body>
 
@@ -17,7 +17,7 @@
           <div class="logo" aria-hidden="true">📚</div>
           <div>
             <h1>Didactics</h1>
-            <small>R 3 D H 3 R R 1 N 6</small>
+            <small>Teaching resources</small>
           </div>
         </button>
 
@@ -44,14 +44,13 @@
   </header>
 
   <main>
-    <!-- ====== HUB VIEW — subject picker as a build pipeline ====== -->
-    <section id="hubView">
+    <!-- ====== PICKER VIEW — subject, then class, then category, all revealed on one page ====== -->
+    <section id="pickerView">
       <div class="hero">
-        <p class="eyebrow" id="heroEyebrow">select-subject.sh</p>
-        <h2 id="heroTitle">Choose your subject.?</h2>
-        <p class="lede" id="heroLede">Worksheets, mock exams and lab material, organised by subject. Pick a stage to open it.</p>
+        <h2 id="pickerHeading">Find your materials</h2>
+        <p class="lede" id="pickerLede">Pick a subject to get started.</p>
       </div>
-      <div id="pipeline" class="pipeline" role="list"></div>
+      <div id="steps" class="steps"></div>
     </section>
 
     <!-- ====== LIBRARY VIEW ====== -->
@@ -73,14 +72,12 @@
   </footer>
 
   <!-- ====== templates ====== -->
-  <template id="tpl-stage">
-    <div class="stage" role="listitem">
-      <button class="node" type="button"></button>
-      <div class="stage-label">
-        <span class="stage-name"></span>
-        <span class="stage-status"></span>
-      </div>
-    </div>
+  <template id="tpl-option">
+    <a class="option-card" href="/">
+      <span class="option-icon"></span>
+      <span class="option-name"></span>
+      <span class="option-status"></span>
+    </a>
   </template>
 
   <template id="tpl-card">
@@ -122,7 +119,7 @@
     </div>
   </dialog>
 
-  <script src="js/data.js?v=4"></script>
-  <script src="js/app.js?v=4"></script>
+  <script src="js/data.js?v=10"></script>
+  <script src="js/app.js?v=10"></script>
 </body>
 </html>

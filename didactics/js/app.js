@@ -3,11 +3,14 @@
 // Depends on window.SUBJECTS from data.js
 // Supports arbitrarily nested categories: a node either has
 // `children` (an object of sub-nodes to drill into) or `items`
-// (a leaf library of materials).
+// (a leaf library of materials). Each node is its own page with
+// its own real URL (e.g. /webapps, /webapps/grade4): picking an
+// option navigates to that page, which then shows only the next
+// level's choices.
 // ==============================================
 
 const SUBJECTS = window.SUBJECTS;
-const ROOT = { key: null, name: 'Didactics', icon: '📚', accent: null, children: SUBJECTS };
+const ROOT = { key: null, name: 'Didactics', icon: '📚', accent: null, childLabel: 'Subject', children: SUBJECTS };
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -41,6 +44,10 @@ function countItems(node) {
   return (node.items || []).length;
 }
 
+function statusText(count) {
+  return count ? `${count} resource${count === 1 ? '' : 's'}` : 'Coming soon';
+}
+
 function uniqueTags(items) {
   return [...new Set(items.flatMap(b => b.tags || []))].sort((a, b) => a.localeCompare(b, 'pl', { sensitivity: 'base' }));
 }
@@ -52,63 +59,84 @@ function matches(item) {
   return hitQ && hitT;
 }
 
-// ====== HERO ======
-function renderHero(node, isRoot) {
-  const eyebrow = $('#heroEyebrow');
-  const title = $('#heroTitle');
-  const lede = $('#heroLede');
-  if (isRoot) {
-    eyebrow.textContent = 'select-subject.sh';
-    title.textContent = 'Choose your subject.';
-    lede.textContent = 'Pick a stage to open it.';
+// ====== icons (emoji or logo image) ======
+function setIconContent(el, node) {
+  el.innerHTML = '';
+  el.classList.toggle('ic--logo', !!node.logoUrl);
+  if (node.logoUrl) {
+    const img = document.createElement('img');
+    img.src = node.logoUrl;
+    img.alt = node.name;
+    img.className = 'ic-logo';
+    el.appendChild(img);
   } else {
-    eyebrow.textContent = `${state.path.join('/')}/select.sh`;
-    title.textContent = `Browsing ${node.name}`;
-    lede.textContent = node.tagline || 'Pick a category to continue.';
+    el.textContent = node.icon;
   }
 }
 
-// ====== PIPELINE (hub + intermediate category pickers) ======
-function renderPipeline(node) {
-  const box = $('#pipeline');
-  box.innerHTML = '';
-  const tpl = $('#tpl-stage');
+// ====== PICKER (one page per level: subject, then class, then category…) ======
+function buildOptionCard(child) {
+  const tpl = $('#tpl-option');
+  const el = tpl.content.firstElementChild.cloneNode(true);
+  el.style.setProperty('--sc', child.accent || 'var(--primary)');
+  el.href = pathToUrl([...state.path, child.key]);
 
-  Object.values(node.children).forEach((child, i) => {
-    const el = tpl.content.firstElementChild.cloneNode(true);
-    el.style.setProperty('--sc', child.accent);
-    el.style.setProperty('--i', i);
-    el.dataset.key = child.key;
+  setIconContent($('.option-icon', el), child);
+  $('.option-name', el).textContent = child.name;
 
-    const btn = $('.node', el);
-    if (child.logoUrl) {
-      btn.textContent = '';
-      btn.classList.add('node--logo');
-      el.style.setProperty('--line-top', '58px');
-      const img = document.createElement('img');
-      img.src = child.logoUrl;
-      img.alt = child.name;
-      img.className = 'node-logo';
-      btn.appendChild(img);
-    } else {
-      btn.textContent = child.icon;
-    }
-    btn.setAttribute('aria-label', `Open ${child.name}`);
-    btn.addEventListener('click', () => goInto(child.key));
+  const count = countItems(child);
+  const status = $('.option-status', el);
+  status.textContent = statusText(count);
+  status.classList.toggle('ready', count > 0);
 
-    $('.stage-name', el).textContent = child.name;
-
-    const status = $('.stage-status', el);
-    const count = countItems(child);
-    if (count) {
-      status.classList.add('ready');
-      status.innerHTML = `<span class="dot"></span>${count} artifact${count === 1 ? '' : 's'}`;
-    } else {
-      status.classList.add('queued');
-      status.innerHTML = `<span class="dot"></span>queued`;
-    }
-    box.appendChild(el);
+  // Real href so middle-click / cmd-click / "copy link" behave like a normal
+  // page link; plain left-clicks are intercepted for instant SPA navigation.
+  el.addEventListener('click', (e) => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    goInto(child.key);
   });
+  return el;
+}
+
+function renderHero(node, isRoot) {
+  const heading = $('#pickerHeading');
+  const lede = $('#pickerLede');
+  if (isRoot) {
+    heading.textContent = 'Find your materials';
+    lede.textContent = 'Pick a subject to get started.';
+  } else {
+    heading.textContent = node.name;
+    lede.textContent = node.tagline || `Choose a ${(node.childLabel || 'category').toLowerCase()} to continue.`;
+  }
+}
+
+function renderPicker(node) {
+  const box = $('#steps');
+  box.innerHTML = '';
+
+  const wrap = document.createElement('div');
+  wrap.className = 'step';
+
+  const title = document.createElement('h3');
+  title.className = 'step-title';
+  title.textContent = node.childLabel || 'Choose';
+  wrap.appendChild(title);
+
+  const grid = document.createElement('div');
+  grid.className = 'option-grid';
+  Object.values(node.children).forEach(child => grid.appendChild(buildOptionCard(child)));
+  wrap.appendChild(grid);
+
+  box.appendChild(wrap);
+}
+
+function goInto(key) {
+  const node = currentNode();
+  if (!node || !node.children || !node.children[key]) return;
+  state.path.push(key);
+  resetFilters();
+  render(true);
 }
 
 // ====== LIBRARY ======
@@ -122,7 +150,7 @@ function renderTags(items) {
     const el = document.createElement('button');
     el.className = 'tag' + (state.tag === value ? ' active' : '');
     el.textContent = label;
-    el.onclick = () => { state.tag = state.tag === value ? null : value; renderLibrary(currentNode()); syncHash(); };
+    el.onclick = () => { state.tag = state.tag === value ? null : value; renderLibrary(currentNode()); syncUrl(); };
     return el;
   };
   box.appendChild(make('All', null));
@@ -137,9 +165,14 @@ function cardFrom(item, node) {
 
   const cover = $('.cover', el);
   const badge = $('.format-badge', cover);
-  if (item.coverUrl) {
+  // No per-item cover photo? Fall back to the category's own logo (e.g. the
+  // "Tworzenie Aplikacji Webowych" / "Aplikacje Webowe" marks) instead of a
+  // generic emoji, so lab/lecture cards read as branded, not placeholder-y.
+  const imgSrc = item.coverUrl || node.logoUrl;
+  cover.classList.toggle('cover-logo', !item.coverUrl && !!node.logoUrl);
+  if (imgSrc) {
     const img = document.createElement('img');
-    img.src = item.coverUrl;
+    img.src = imgSrc;
     img.alt = item.title;
     img.loading = 'lazy';
     cover.innerHTML = '';
@@ -158,20 +191,6 @@ function cardFrom(item, node) {
   return el;
 }
 
-function setIconContent(el, node) {
-  el.innerHTML = '';
-  el.classList.toggle('ic--logo', !!node.logoUrl);
-  if (node.logoUrl) {
-    const img = document.createElement('img');
-    img.src = node.logoUrl;
-    img.alt = node.name;
-    img.className = 'ic-logo';
-    el.appendChild(img);
-  } else {
-    el.textContent = node.icon;
-  }
-}
-
 function renderLibrary(node) {
   if (!node) return;
 
@@ -180,13 +199,9 @@ function renderLibrary(node) {
   $('#introTagline').textContent = node.tagline || '';
 
   const badge = $('#introStatus');
-  if (node.items.length) {
-    badge.className = 'status-pill ready';
-    badge.innerHTML = `<span class="dot"></span>passing · ${node.items.length} artifact${node.items.length === 1 ? '' : 's'}`;
-  } else {
-    badge.className = 'status-pill queued';
-    badge.innerHTML = `<span class="dot"></span>queued · nothing built yet`;
-  }
+  const count = node.items.length;
+  badge.className = 'status-pill' + (count ? ' ready' : ' queued');
+  badge.innerHTML = `<span class="dot"></span>${statusText(count)}`;
 
   renderTags(node.items);
 
@@ -240,7 +255,7 @@ function render(push = false) {
   const leaf = isLeaf(node);
   const isRoot = state.path.length === 0;
 
-  $('#hubView').hidden = leaf;
+  $('#pickerView').hidden = leaf;
   $('#libraryView').hidden = !leaf;
   $('#libraryControls').hidden = !leaf;
   $('#tags').style.display = leaf ? '' : 'none';
@@ -254,9 +269,9 @@ function render(push = false) {
     renderLibrary(node);
   } else {
     renderHero(node, isRoot);
-    renderPipeline(node);
+    renderPicker(node);
   }
-  syncHash(push);
+  syncUrl(push);
 }
 
 function resetFilters() {
@@ -265,13 +280,6 @@ function resetFilters() {
 
 function goRoot() {
   state.path = [];
-  resetFilters();
-  render(true);
-}
-function goInto(key) {
-  const node = currentNode();
-  if (!node || !node.children || !node.children[key]) return;
-  state.path.push(key);
   resetFilters();
   render(true);
 }
@@ -329,33 +337,42 @@ $('[data-action="close"]').onclick = () => $('#dlg').close();
 // ====== UI events ======
 $('#brandBtn').addEventListener('click', goRoot);
 $('#backBtn').addEventListener('click', goBack);
-$('#q').addEventListener('input', (e) => { state.q = e.target.value; renderLibrary(currentNode()); syncHash(); });
-$('#sort').addEventListener('change', (e) => { state.sort = e.target.value; renderLibrary(currentNode()); syncHash(); });
+$('#q').addEventListener('input', (e) => { state.q = e.target.value; renderLibrary(currentNode()); syncUrl(); });
+$('#sort').addEventListener('change', (e) => { state.sort = e.target.value; renderLibrary(currentNode()); syncUrl(); });
 $('#clearBtn').addEventListener('click', () => {
   state.q = ''; $('#q').value = ''; state.tag = null; state.sort = 'recent'; $('#sort').value = 'recent';
-  renderLibrary(currentNode()); syncHash();
+  renderLibrary(currentNode()); syncUrl();
 });
 
-// ====== hash routing ======
-function syncHash(push = false) {
+// ====== pretty-URL routing (real pathnames, e.g. /webapps/grade4/lectures) ======
+function pathToUrl(pathArr) {
+  return pathArr.length ? '/' + pathArr.map(encodeURIComponent).join('/') : '/';
+}
+
+// The old /didactics/ entry point is kept for existing bookmarks, but every
+// in-app link now points at the canonical root-level pretty URL. So on load,
+// treat "/didactics" (with nothing after it) the same as the site root.
+function stripLegacyMount(pathname) {
+  return pathname.replace(/^\/didactics(?=\/|$)/i, '') || '/';
+}
+
+function syncUrl(push = false) {
   const params = new URLSearchParams();
-  if (state.path.length) params.set('path', state.path.join('.'));
   if (state.q) params.set('q', state.q);
   if (state.tag) params.set('tag', state.tag);
   if (state.sort && state.sort !== 'recent') params.set('sort', state.sort);
-  const h = params.toString();
-  const url = h ? `#${h}` : ' ';
+  const search = params.toString();
+  const url = pathToUrl(state.path) + (search ? `?${search}` : '');
   if (push) {
     history.pushState(null, '', url);
   } else {
     history.replaceState(null, '', url);
   }
 }
-function readHash() {
-  const h = location.hash.replace(/^#/, '');
-  const p = new URLSearchParams(h);
-  const rawPath = p.get('path');
-  const candidate = rawPath ? rawPath.split('.') : [];
+
+function readLocation() {
+  const pathname = stripLegacyMount(decodeURIComponent(location.pathname));
+  const candidate = pathname.replace(/^\/|\/$/g, '').split('/').filter(Boolean);
 
   let node = ROOT;
   const valid = [];
@@ -368,13 +385,15 @@ function readHash() {
     }
   }
   state.path = valid;
+
+  const p = new URLSearchParams(location.search);
   state.q = p.get('q') || '';
   state.tag = p.get('tag');
   state.sort = p.get('sort') || 'recent';
 }
-addEventListener('hashchange', () => { readHash(); render(); });
+addEventListener('popstate', () => { readLocation(); render(); });
 
 // ====== init ======
 $('#year').textContent = new Date().getFullYear();
-readHash();
+readLocation();
 render();

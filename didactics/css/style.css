@@ -63,7 +63,7 @@ header {
   font-size: 20px;
 }
 .brand h1 { font-size: 18px; margin: 0; letter-spacing: .3px; font-weight: 650; }
-.brand small { display:block; color: var(--muted); margin-top:-2px; font-size:11px; font-family: var(--font-mono); letter-spacing: .5px; }
+.brand small { display:block; color: var(--muted); margin-top:-2px; font-size:11px; font-family: var(--font-body); letter-spacing: .2px; }
 
 .crumb { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 220px; font-family: var(--font-mono); }
 .crumb .back {
@@ -105,80 +105,75 @@ header {
 
 main { max-width: 1120px; margin: 0 auto 90px; padding: 0 20px; }
 
-/* ====== HUB / pipeline ====== */
-.hero { padding: 44px 0 8px; }
-.hero .eyebrow {
-  color: var(--accent); font-size: 13px; font-family: var(--font-mono);
-  letter-spacing: .4px; margin: 0 0 10px; display: inline-flex; align-items: center; gap: 8px;
-}
-.hero .eyebrow::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
-.hero h2 { margin: 0; font-size: clamp(28px, 4.4vw, 40px); letter-spacing: -.01em; font-weight: 650; }
+/* ====== PICKER — subject / class / category steps ====== */
+.hero { padding: 34px 0 6px; }
+.hero h2 { margin: 0; font-size: clamp(26px, 4vw, 36px); letter-spacing: -.01em; font-weight: 650; }
 .hero p.lede { color: var(--muted); margin: 12px 0 0; max-width: 58ch; font-size: 15px; }
 
-.pipeline {
-  display: flex; align-items: flex-start; gap: 0; margin-top: 56px;
-  flex-wrap: wrap; row-gap: 44px;
+.steps { margin-top: 8px; }
+.step { margin-top: 36px; }
+.step:first-child { margin-top: 26px; }
+.step-title {
+  font-family: var(--font-display); font-size: 13px; text-transform: uppercase;
+  letter-spacing: .6px; color: var(--muted); margin: 0 0 14px; font-weight: 600;
 }
-.stage {
-  position: relative; display: flex; flex-direction: column; align-items: center;
-  flex: 1 1 140px; min-width: 140px; padding-top: 4px;
-  animation: stageIn .5s ease both; animation-delay: calc(var(--i) * .08s);
-}
-@keyframes stageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-.stage:not(:last-child)::after {
-  content: ''; position: absolute; top: var(--line-top, 34px); left: 50%; width: 100%; height: 2px;
-  background: linear-gradient(90deg, var(--border-strong), var(--border-strong));
-  z-index: 0;
+.option-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; }
+
+.option-card, .option-card:visited {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  padding: 22px 16px; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--card);
+  cursor: pointer; text-align: center; text-decoration: none; font: inherit; color: inherit;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
+  animation: optionIn .4s ease both; animation-delay: calc(var(--i, 0) * .05s);
 }
-.node {
-  position: relative; z-index: 1; width: 68px; height: 68px; border-radius: 50%;
-  display: grid; place-items: center; font-size: 28px; cursor: pointer;
-  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--sc) 30%, var(--card)), var(--card));
-  border: 2px solid color-mix(in srgb, var(--sc) 55%, var(--border-strong));
-  box-shadow: 0 0 0 6px color-mix(in srgb, var(--sc) 8%, transparent), var(--shadow-soft);
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-  overflow: hidden; max-width: 260px;
+@keyframes optionIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.option-card:hover, .option-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--sc) 55%, var(--border-strong));
+  box-shadow: var(--shadow-soft);
 }
-.node:hover, .node:focus-visible {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 0 0 8px color-mix(in srgb, var(--sc) 16%, transparent), 0 14px 28px rgba(0,0,0,.5);
+.option-card.selected {
+  border-color: var(--sc);
+  background: color-mix(in srgb, var(--sc) 12%, var(--card));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--sc) 25%, transparent);
 }
-.node.node--logo {
-  width: 188px; height: 108px; border-radius: 12px; padding: 22px;
+
+.option-icon {
+  width: 56px; height: 56px; border-radius: 14px; flex: none;
+  display: grid; place-items: center; font-size: 26px; overflow: hidden;
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--sc) 32%, var(--card)), var(--card));
+  border: 1px solid color-mix(in srgb, var(--sc) 45%, var(--border-strong));
+}
+.option-icon.ic--logo {
+  position: relative;
+  width: 100%; height: 60px; border-radius: 10px;
   background: color-mix(in srgb, var(--sc) 10%, var(--card));
-  box-shadow: 0 0 0 6px color-mix(in srgb, var(--sc) 6%, transparent), var(--shadow-soft);
 }
-.node.node--logo:hover, .node.node--logo:focus-visible {
-  box-shadow: 0 0 0 8px color-mix(in srgb, var(--sc) 12%, transparent), 0 14px 28px rgba(0,0,0,.5);
-}
-.node-logo {
-  width: 100%; height: 100%; object-fit: contain; display: block;
-}
+
+.option-name { font-family: var(--font-display); font-weight: 640; font-size: 15px; }
+.option-status { font-size: 12.5px; color: var(--muted); }
+.option-status.ready { color: color-mix(in srgb, var(--sc) 78%, var(--text)); }
+
+/* Absolute + explicit calc() width/height (not plain 100%) so object-fit
+   sizes the logo against a box that's always definite, even inside
+   grid/flex parents where a percentage height on a static child can
+   silently fall back to "auto" and let the image render at natural size. */
 .ic-logo {
-  width: 100%; height: 100%; object-fit: contain; display: block;
+  position: absolute; top: 8px; left: 8px;
+  width: calc(100% - 16px); height: calc(100% - 16px);
+  object-fit: contain; display: block;
 }
 .subject-intro .ic.ic--logo {
-  width: 108px; height: 48px; min-width: 0; max-width: none; padding: 0;
+  position: relative;
+  width: 108px; height: 48px; min-width: 0; max-width: none;
   background: transparent; border: none;
 }
-.stage-label { margin-top: 14px; display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center; }
-.stage-name { font-family: var(--font-display); font-weight: 600; font-size: 15px; }
-.stage-status {
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: .3px;
-  display: flex; align-items: center; gap: 6px; color: var(--muted);
-}
-.stage-status .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); flex: none; }
-.stage-status.ready { color: color-mix(in srgb, var(--sc, var(--accent)) 75%, var(--text)); }
-.stage-status.ready .dot { background: var(--sc, var(--accent)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sc, var(--accent)) 25%, transparent); }
-.stage-status.queued { opacity: .7; }
-.stage-status.queued .dot { background: transparent; border: 1px dashed var(--muted); }
+.subject-intro .ic.ic--logo .ic-logo { top: 0; left: 0; width: 100%; height: 100%; }
 
 @media (max-width: 720px) {
-  .pipeline { flex-direction: column; align-items: stretch; gap: 30px; }
-  .stage { flex-direction: row; align-items: center; gap: 16px; min-width: 0; }
-  .stage:not(:last-child)::after { top: 68px; left: 34px; width: 2px; height: calc(100% + 30px); }
-  .stage-label { margin-top: 0; align-items: flex-start; text-align: left; }
   .controls { justify-content: stretch; }
   .modal { grid-template-columns: 1fr; }
   .brand h1 { font-size: 16px; }
@@ -229,6 +224,19 @@ main { max-width: 1120px; margin: 0 auto 90px; padding: 0 20px; }
 }
 .cover img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .3s ease; }
 .card:hover .cover img { transform: scale(1.05); }
+
+/* Category-logo fallback cover (no per-item photo): show the full mark,
+   centered, rather than cropping it like a photo. Absolute + calc() width/
+   height (not a plain percentage) so it sizes correctly inside this grid
+   layout — see the same fix on .ic-logo for why a percentage falls back
+   to the image's natural size here. */
+.cover.cover-logo { background: color-mix(in srgb, var(--sc, var(--accent)) 16%, #0e1426); }
+.cover.cover-logo img {
+  position: absolute; top: 16px; left: 16px;
+  width: calc(100% - 32px); height: calc(100% - 32px);
+  object-fit: contain; object-position: center;
+}
+.card:hover .cover.cover-logo img { transform: none; }
 .format-badge {
   position: absolute; top: 8px; right: 8px; font-family: var(--font-mono); font-size: 10px;
   letter-spacing: .4px; padding: 3px 7px; border-radius: 6px;
