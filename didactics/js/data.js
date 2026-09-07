@@ -48,9 +48,7 @@ window.SUBJECTS = {
             key: 'laboratories', name: 'Laboratories', icon: '🧪', accent: '#ff9e64',
             tagline: 'Hands-on lab exercises',
             logoUrl: '/webapps/logo_labs.png',
-            items: [
-              { id:'wa-lab-0-g4', title:'Lab 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Introductory laboratory exercise', coverUrl:'', url:'/webapps/grade4/laboratories/WA_Lab_0.pdf', format:'PDF' }
-            ]
+            items: []
           },
           lectures: {
             key: 'lectures', name: 'Lectures', icon: '📖', accent: '#ff9e64',
