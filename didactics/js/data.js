@@ -70,8 +70,7 @@ window.SUBJECTS = {
             tagline: 'Hands-on lab exercises',
             logoUrl: '/webapps/logo_labs.png',
             items: [
-              { id:'WA_intro', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_intro_labs.pdf', format:'PDF' },
-              { id:'WA_Lab_0', title:'Lab 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_Lab_0.pdf', format:'PDF' }
+              { id:'WA_intro', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_intro_labs.pdf', format:'PDF' }
             ]
           },
           lectures: {
@@ -81,7 +80,9 @@ window.SUBJECTS = {
             items: [
               { id:'WA_intro', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade5/lectures/WA_intro.pdf', format:'PDF' },
               { id:'WA_5g_L0', title:'Lecture 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 0', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L0.pdf', format:'PDF' },
-              { id:'WA_5g_L1', title:'Lecture 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 1', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L1.pdf', format:'PDF' }
+              { id:'WA_5g_L1', title:'Lecture 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 1', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L1.pdf', format:'PDF' },
+              { id:'WA_5g_GIT', title:'Intro to git', author:'Mateusz Węglewski', year:2026, tags:[], description:'Introduction to git', coverUrl:'', url:'/webapps/grade5/lectures/additional_webapps_git_intro.pdf', format:'PDF' },
+              { id:'WA_5g_REMOTE', title:'Git remote', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git remote', coverUrl:'', url:'/webapps/grade5/lectures/additional_webapps_git_remote.pdf', format:'PDF' }
             ]
           }
         }
