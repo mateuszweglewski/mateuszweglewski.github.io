@@ -68,7 +68,8 @@ window.SUBJECTS = {
             tagline: 'Hands-on lab exercises',
             logoUrl: '/webapps/logo_labs.png',
             items: [
-              { id:'WA_intro', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_intro_labs.pdf', format:'PDF' }
+              { id:'WA_intro', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_intro_labs.pdf', format:'PDF' },
+              { id:'WA_intro', title:'Lab 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Documenting change', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_0.pdf', format:'PDF' }
             ]
           },
           lectures: {
