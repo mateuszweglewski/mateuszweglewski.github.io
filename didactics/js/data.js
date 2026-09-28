@@ -81,7 +81,9 @@ window.SUBJECTS = {
               { id:'WA_5g_L0', title:'Lecture 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 0', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L0.pdf', format:'PDF' },
               { id:'WA_5g_L1', title:'Lecture 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 1', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L1.pdf', format:'PDF' },
               { id:'WA_5g_GIT', title:'Intro to git', author:'Mateusz Węglewski', year:2026, tags:[], description:'Introduction to git', coverUrl:'', url:'/webapps/grade5/lectures/additional_webapps_git_intro.pdf', format:'PDF' },
-              { id:'WA_5g_REMOTE', title:'Git remote', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git remote', coverUrl:'', url:'/webapps/grade5/lectures/additional_webapps_git_remote.pdf', format:'PDF' }
+              { id:'WA_5g_REMOTE', title:'Git remote', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git remote', coverUrl:'', url:'/webapps/grade5/lectures/additional_webapps_git_remote.pdf', format:'PDF' },
+              { id:'WA_5g_L2', title:'Lecture 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git branch & merge', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L2.pdf', format:'PDF' },
+              { id:'WA_5g_L3', title:'Lecture 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'PR, C0de review & merge conflicts', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L3.pdf', format:'PDF' },
             ]
           }
         }
