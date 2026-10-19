@@ -86,6 +86,7 @@ window.SUBJECTS = {
               { id:'WA_5g_REMOTE', title:'Git remote', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git remote', coverUrl:'', url:'/webapps/grade5/lectures/additional_webapps_git_remote.pdf', format:'PDF' },
               { id:'WA_5g_L2', title:'Lecture 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git branch & merge', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L2.pdf', format:'PDF' },
               { id:'WA_5g_L3', title:'Lecture 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'PR, C0de review & merge conflicts', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L3.pdf', format:'PDF' },
+              { id:'WA_5g_L4', title:'Lecture 4', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express intro', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L4.pdf', format:'PDF' }
             ]
           }
         }
