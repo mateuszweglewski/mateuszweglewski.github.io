@@ -48,13 +48,21 @@ window.SUBJECTS = {
             key: 'laboratories', name: 'Laboratories', icon: '🧪', accent: '#ff9e64',
             tagline: 'Hands-on lab exercises',
             logoUrl: '/webapps/logo_labs.png',
-            items: []
+            items: [
+              { id:'WA_intro4', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade4/laboratories/WA_intro_4labs.pdf', format:'PDF' },
+              { id:'WA4_L0', title:'Lab 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Documenting change', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_0.pdf', format:'PDF' }
+            ]
           },
           lectures: {
             key: 'lectures', name: 'Lectures', icon: '📖', accent: '#ff9e64',
             tagline: 'Lecture notes & slides',
             logoUrl: '/webapps/logo_lectures.png',
-            items: []
+            items: [
+              { id:'WA_intro', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade4/lectures/WA_intro_4lectures.pdf', format:'PDF' },
+              { id:'WA_4g_l0', title:'Lecture 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 0', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l0.pdf', format:'PDF' },
+              { id:'WA_4g_l1', title:'Lecture 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 1', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l1.pdf', format:'PDF' },
+              { id:'WA_4g_l2', title:'Lecture 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 2', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l2.pdf', format:'PDF' }
+            ]
           }
         }
       },
