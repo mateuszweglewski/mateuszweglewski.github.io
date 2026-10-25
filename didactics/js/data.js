@@ -79,7 +79,8 @@ window.SUBJECTS = {
               { id:'WA_intro', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_intro_labs.pdf', format:'PDF' },
               { id:'WA_L0', title:'Lab 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Documenting change', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_0.pdf', format:'PDF' },
               { id:'WA_L1', title:'Lab 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git branch & merge', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_1.pdf', format:'PDF' },
-              { id:'WA_L2', title:'Lab 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git - Rebase, Code Review', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_2.pdf', format:'PDF' }
+              { id:'WA_L2', title:'Lab 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git - Rebase, Code Review', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_2.pdf', format:'PDF' },
+              { id:'WA_L3', title:'Lab 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_3.pdf', format:'PDF' }
             ]
           },
           lectures: {
