@@ -51,7 +51,8 @@ window.SUBJECTS = {
             items: [
               { id:'WA_intro4', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade4/laboratories/WA_intro_4labs.pdf', format:'PDF' },
               { id:'WA4_L0', title:'Lab 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Documenting change', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_0.pdf', format:'PDF' },
-              { id:'WA4_L1', title:'Lab 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Linux & Command Line', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_1.pdf', format:'PDF' }
+              { id:'WA4_L1', title:'Lab 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Linux & Command Line', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_1.pdf', format:'PDF' },
+              { id:'LC', title:'Linux CLI Cheetsheet', author:'Mateusz Węglewski', year:2026, tags:[], description:'Linux & Command Line', coverUrl:'', url:'/webapps/grade4/laboratories/linux_shell_cheatsheet.pdf', format:'PDF' }
             ]
           },
           lectures: {
@@ -62,7 +63,10 @@ window.SUBJECTS = {
               { id:'WA_intro', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade4/lectures/WA_intro_4lectures.pdf', format:'PDF' },
               { id:'WA_4g_l0', title:'Lecture 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 0', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l0.pdf', format:'PDF' },
               { id:'WA_4g_l1', title:'Lecture 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 1', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l1.pdf', format:'PDF' },
-              { id:'WA_4g_l2', title:'Lecture 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 2', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l2.pdf', format:'PDF' }
+              { id:'WA_4g_l2', title:'Lecture 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 2', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l2.pdf', format:'PDF' },
+              { id:'WA_4g_l3', title:'Lecture 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 3', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l3.pdf', format:'PDF' },
+              { id:'WA_4g_l4', title:'Lecture 4', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 4', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l4.pdf', format:'PDF' },
+              { id:'WA_4g_l5', title:'Lecture 5', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 5', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l5.pdf', format:'PDF' }
             ]
           }
         }
@@ -81,6 +85,7 @@ window.SUBJECTS = {
               { id:'WA_L0', title:'Lab 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Documenting change', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_0.pdf', format:'PDF' },
               { id:'WA_L1', title:'Lab 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git branch & merge', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_1.pdf', format:'PDF' },
               { id:'WA_L2', title:'Lab 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git - Rebase, Code Review', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_2.pdf', format:'PDF' },
+              { id:'WA_L3', title:'Lab 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_3.pdf', format:'PDF' },
               { id:'WA_L3', title:'Lab 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_3.pdf', format:'PDF' }
             ]
           },
@@ -96,7 +101,8 @@ window.SUBJECTS = {
               { id:'WA_5g_REMOTE', title:'Git remote', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git remote', coverUrl:'', url:'/webapps/grade5/lectures/additional_webapps_git_remote.pdf', format:'PDF' },
               { id:'WA_5g_L2', title:'Lecture 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git branch & merge', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L2.pdf', format:'PDF' },
               { id:'WA_5g_L3', title:'Lecture 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'PR, C0de review & merge conflicts', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L3.pdf', format:'PDF' },
-              { id:'WA_5g_L4', title:'Lecture 4', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express intro', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L4.pdf', format:'PDF' }
+              { id:'WA_5g_L4', title:'Lecture 4', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express intro', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L4.pdf', format:'PDF' },
+              { id:'WA_5g_L5', title:'Lecture 5', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express MVC', coverUrl:'', url:'/webapps/grade5/lectures/WA_5g_L5.pdf', format:'PDF' }
             ]
           }
         }
