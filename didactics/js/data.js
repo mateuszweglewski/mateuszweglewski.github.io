@@ -50,7 +50,8 @@ window.SUBJECTS = {
             logoUrl: '/webapps/logo_labs.png',
             items: [
               { id:'WA_intro4', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade4/laboratories/WA_intro_4labs.pdf', format:'PDF' },
-              { id:'WA4_L0', title:'Lab 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Documenting change', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_0.pdf', format:'PDF' }
+              { id:'WA4_L0', title:'Lab 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Documenting change', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_0.pdf', format:'PDF' },
+              { id:'WA4_L1', title:'Lab 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Linux & Command Line', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_1.pdf', format:'PDF' }
             ]
           },
           lectures: {
