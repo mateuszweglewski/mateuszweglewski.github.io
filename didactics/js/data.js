@@ -86,7 +86,7 @@ window.SUBJECTS = {
               { id:'WA_L1', title:'Lab 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git branch & merge', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_1.pdf', format:'PDF' },
               { id:'WA_L2', title:'Lab 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git - Rebase, Code Review', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_2.pdf', format:'PDF' },
               { id:'WA_L3', title:'Lab 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_3.pdf', format:'PDF' },
-              { id:'WA_L3', title:'Lab 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_3.pdf', format:'PDF' }
+              { id:'WA_L4', title:'Lab 4', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express MVC', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_4.pdf', format:'PDF' }
             ]
           },
           lectures: {
