@@ -2,6 +2,7 @@
 //   english/                                    — flat, all English worksheets/exams
 //   webapps/<class>/laboratories/*.pdf           — practical labs, per class
 //   webapps/<class>/lectures/*.pdf               — theory/slides (prezentacje), per class
+//   webapps/<class>/lectures/*.ipynb              — lecture notebooks (Jupyter), listed among lecture resources
 // i.e. the file path under the repo root mirrors the site's URL path one-to-one
 // (webapps/grade4/laboratories/foo.pdf is served at /webapps/grade4/laboratories/foo.pdf).
 // Drop a new PDF in the matching folder, then add an entry to that node's `items`
@@ -52,6 +53,7 @@ window.SUBJECTS = {
               { id:'WA_intro4', title:'Intro', author:'Mateusz Węglewski', year:2026, tags:[], description:'Intro', coverUrl:'', url:'/webapps/grade4/laboratories/WA_intro_4labs.pdf', format:'PDF' },
               { id:'WA4_L0', title:'Lab 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Documenting change', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_0.pdf', format:'PDF' },
               { id:'WA4_L1', title:'Lab 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Linux & Command Line', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_1.pdf', format:'PDF' },
+              { id:'WA4_L2', title:'Lab 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lab 2', coverUrl:'', url:'/webapps/grade4/laboratories/WA_4labs_lab_2.pdf', format:'PDF' },
               { id:'LC', title:'Linux CLI Cheetsheet', author:'Mateusz Węglewski', year:2026, tags:[], description:'Linux & Command Line', coverUrl:'', url:'/webapps/grade4/laboratories/linux_shell_cheatsheet.pdf', format:'PDF' }
             ]
           },
@@ -66,7 +68,9 @@ window.SUBJECTS = {
               { id:'WA_4g_l2', title:'Lecture 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 2', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l2.pdf', format:'PDF' },
               { id:'WA_4g_l3', title:'Lecture 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 3', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l3.pdf', format:'PDF' },
               { id:'WA_4g_l4', title:'Lecture 4', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 4', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l4.pdf', format:'PDF' },
-              { id:'WA_4g_l5', title:'Lecture 5', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 5', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l5.pdf', format:'PDF' }
+              { id:'WA_4g_l5', title:'Lecture 5', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 5', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l5.pdf', format:'PDF' },
+              { id:'WA_4g_l6', title:'Lecture 6', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 6', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l6.pdf', format:'PDF' },
+              { id:'WA_4g_l7', title:'Lecture 7', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 7', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l7.ipynb', format:'IPYNB' }
             ]
           }
         }
