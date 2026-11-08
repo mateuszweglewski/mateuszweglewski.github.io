@@ -32,7 +32,8 @@ window.SUBJECTS = {
       { id:'18', title:'Gradiation of adjectives', author:'Mateusz Węglewski', year:2026, tags:['a1','a2','b1','b2','c1'], description:'Gradiation of adjectives worksheet', coverUrl:'/english/gog_cover.png', url:'/english/gog_grad_adj.pdf', format:'PDF' },
       { id:'19', title:'The Present Perfect Progressive Tense', author:'Mateusz Węglewski', year:2026, tags:['b1','b2'], description:'The Present Perfect Progressive Tense worksheet', coverUrl:'/english/gog_cover.png', url:'/english/gog_pr_perf_prog.pdf', format:'PDF' },
       { id:'20', title:'Key Word Transformations - Extended Matura', author:'CKE', year:2026, tags:['b1','b2'], description:'Key Word Transformations - Extended Matura (categorised)', coverUrl:'', url:'/english/kwt_m_ex.pdf', format:'PDF' },
-      { id:'21', title:'Modal Verbs', author:'Mateusz Węglewski', year:2026, tags:['a1','a2','b1','b2','c1'], description:'Modal verbs worksheet', coverUrl:'/english/gog_cover.png', url:'/english/gog_modals.pdf', format:'PDF' }
+      { id:'21', title:'Modal Verbs', author:'Mateusz Węglewski', year:2026, tags:['a1','a2','b1','b2','c1'], description:'Modal verbs worksheet', coverUrl:'/english/gog_cover.png', url:'/english/gog_modals.pdf', format:'PDF' },
+      { id:'22', title:'Articles', author:'Mateusz Węglewski', year:2026, tags:['a1','a2','b1'], description:'Articles worksheet (a/an/the/zero article)', coverUrl:'/english/gog_cover.png', url:'/english/gog_articles.pdf', format:'PDF' }
     ]
   },
   webapps: {
