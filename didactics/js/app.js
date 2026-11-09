@@ -320,7 +320,9 @@ function openModal(item, node) {
   $('#dlgOpen').href = item.url;
   const dl = $('#dlgDownload');
   dl.href = item.url;
-  dl.download = (item.title || 'material').replace(/\s+/g, '-').toLowerCase();
+  // Preserve the file extension from the URL so downloads keep the right type (e.g. .ipynb)
+  const ext = (item.url.split('/').pop().match(/\.[^.]+$/) || [''])[0];
+  dl.download = (item.title || 'material').replace(/\s+/g, '-').toLowerCase() + ext;
 
   $('#dlg').showModal();
 }
