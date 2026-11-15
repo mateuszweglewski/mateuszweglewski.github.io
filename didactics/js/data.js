@@ -56,6 +56,7 @@ window.SUBJECTS = {
               { id:'WA4_L0', title:'Lab 0', author:'Mateusz Węglewski', year:2026, tags:[], description:'Documenting change', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_0.pdf', format:'PDF' },
               { id:'WA4_L1', title:'Lab 1', author:'Mateusz Węglewski', year:2026, tags:[], description:'Linux & Command Line', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_1.pdf', format:'PDF' },
               { id:'WA4_L2', title:'Lab 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lab 2', coverUrl:'', url:'/webapps/grade4/laboratories/WA_4labs_lab_2.pdf', format:'PDF' },
+              { id:'WA4_L3', title:'Lab 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lab 3', coverUrl:'', url:'/webapps/grade4/laboratories/WA_labs_4lab_3.pdf', format:'PDF' },
               { id:'LC', title:'Linux CLI Cheetsheet', author:'Mateusz Węglewski', year:2026, tags:[], description:'Linux & Command Line', coverUrl:'', url:'/webapps/grade4/laboratories/linux_shell_cheatsheet.pdf', format:'PDF' }
             ]
           },
@@ -93,7 +94,8 @@ window.SUBJECTS = {
               { id:'WA_L2', title:'Lab 2', author:'Mateusz Węglewski', year:2026, tags:[], description:'Git - Rebase, Code Review', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_2.pdf', format:'PDF' },
               { id:'WA_L3', title:'Lab 3', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express intro', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_3.pdf', format:'PDF' },
               { id:'WA_L4', title:'Lab 4', author:'Mateusz Węglewski', year:2026, tags:[], description:'Express MVC', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_4.pdf', format:'PDF' },
-              { id:'WA_L5', title:'Lab 5', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lab 5', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_5.pdf', format:'PDF' }
+              { id:'WA_L5', title:'Lab 5', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lab 5', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_5.pdf', format:'PDF' },
+              { id:'WA_L6', title:'Lab 6', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lab 6', coverUrl:'', url:'/webapps/grade5/laboratories/WA_labs_lab_6.pdf', format:'PDF' }
             ]
           },
           lectures: {
