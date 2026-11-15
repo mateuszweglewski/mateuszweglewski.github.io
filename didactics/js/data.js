@@ -73,7 +73,9 @@ window.SUBJECTS = {
               { id:'WA_4g_l4', title:'Lecture 4', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 4', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l4.pdf', format:'PDF' },
               { id:'WA_4g_l5', title:'Lecture 5', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 5', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l5.pdf', format:'PDF' },
               { id:'WA_4g_l6', title:'Lecture 6', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 6', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l6.pdf', format:'PDF' },
-              { id:'WA_4g_l7', title:'Lecture 7', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 7', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l7.ipynb', format:'IPYNB' }
+              { id:'WA_4g_l7', title:'Lecture 7', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 7', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l7.ipynb', format:'IPYNB' },
+              { id:'WA_4g_l8', title:'Lecture 8', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 8', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l8.ipynb', format:'IPYNB' },
+              { id:'WA_4g_l9', title:'Lecture 9', author:'Mateusz Węglewski', year:2026, tags:[], description:'Lecture 9', coverUrl:'', url:'/webapps/grade4/lectures/WA_4g_l9.ipynb', format:'IPYNB' }
             ]
           }
         }
