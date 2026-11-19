@@ -35,8 +35,8 @@ window.SUBJECTS = {
       { id:'21', title:'Modal Verbs', author:'Mateusz Węglewski', year:2026, tags:['a1','a2','b1','b2','c1'], description:'Modal verbs worksheet', coverUrl:'/english/gog_cover.png', url:'/english/gog_modals.pdf', format:'PDF' },
       { id:'22', title:'Articles', author:'Mateusz Węglewski', year:2026, tags:['a1','a2','b1'], description:'Articles worksheet (a/an/the/zero article)', coverUrl:'/english/gog_cover.png', url:'/english/gog_articles.pdf', format:'PDF' },
       { id:'23', title:'Word Formation - Extended Matura', author:'CKE', year:2026, tags:['b1','b2'], description:'Word Formation - Extended Matura (categorised)', coverUrl:'', url:'/english/wf_categorised.pdf', format:'PDF' },
-      { id:'24', title:'Matura ZSM-E 2026 Poziom Podstawowy', author:'Mateusz Węglewski, Anita Drobisz-Węglewska', year:2026, tags:['b1','b2'], description:'Official mock matura exam - ZSM-E 2026', coverUrl:'', url:'/english/matura_2026_podstawa.pdf', format:'PDF' },
-      { id:'25', title:'Matura ZSM-E 2026 Poziom Rozszerzony', author:'Mateusz Węglewski, Anita Drobisz-Węglewska', year:2026, tags:['b1','b2'], description:'Official mock matura exam - ZSM-E 2026', coverUrl:'', url:'/english/matura_2026_rozszerzenie.pdf', format:'PDF' }
+      { id:'24', title:'Matura ZSM-E 2026 Poziom Podstawowy', author:'Mateusz Węglewski, Anita Drobisz-Węglewska', year:2026, tags:['b1','b2'], description:'Official mock matura exam - ZSM-E 2026', coverUrl:'/english/matura2026basic.png', url:'/english/matura_2026_podstawa.pdf', format:'PDF' },
+      { id:'25', title:'Matura ZSM-E 2026 Poziom Rozszerzony', author:'Mateusz Węglewski, Anita Drobisz-Węglewska', year:2026, tags:['b1','b2'], description:'Official mock matura exam - ZSM-E 2026', coverUrl:'/english/matura2026extended.png', url:'/english/matura_2026_rozszerzenie.pdf', format:'PDF' }
     ]
   },
   webapps: {
